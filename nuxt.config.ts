@@ -29,12 +29,7 @@ export default defineNuxtConfig({
   i18n: {
     strategy: 'prefix_except_default',
     defaultLocale: 'ru',
-    detectBrowserLanguage: {
-      useCookie: true,
-      cookieKey: 'i18n_redirected',
-      redirectOn: 'root' // recommended
-    },
-    baseUrl: 'https://ms0ur.xyz',
+    baseUrl: 'https://ms0ur.space',
     locales: [
       {
         code: 'ru',
@@ -42,12 +37,12 @@ export default defineNuxtConfig({
         name: 'Русский',
         file: 'ru-RU.json'
       },
-      {
-        code: 'en',
-        language: 'en-US',
-        name: 'English',
-        file: 'en-US.json'
-      }
+      // {
+      //   code: 'en',
+      //   language: 'en-US',
+      //   name: 'English',
+      //   file: 'en-US.json'
+      // }
     ]
   }
 
