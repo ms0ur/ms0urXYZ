@@ -9,20 +9,19 @@ export default defineNuxtConfig({
     }
   },
 
+
+
   plugins: [
     '~/plugins/route-loading.client.ts',
   ],
 
   modules: [
-    '@nuxt/content',
     '@nuxt/eslint',
     '@nuxt/fonts',
     '@nuxt/icon',
     '@nuxt/image',
     '@nuxtjs/i18n',
     '@nuxtjs/tailwindcss',
-    '@nuxtjs/color-mode',
-    '@nuxtjs/turnstile',
     '@nuxtjs/robots',
     '@tresjs/nuxt'
   ],
