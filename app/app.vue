@@ -9,5 +9,4 @@
 <script setup lang="ts">
 </script>
 <style>
-@custom-variant dark (&:where(.dark-mode, .dark-mode *));
 </style>

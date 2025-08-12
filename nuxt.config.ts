@@ -23,7 +23,8 @@ export default defineNuxtConfig({
     '@nuxtjs/i18n',
     '@nuxtjs/tailwindcss',
     '@nuxtjs/robots',
-    '@tresjs/nuxt'
+    '@tresjs/nuxt',
+    '@nuxtjs/color-mode'
   ],
 
   i18n: {
@@ -44,6 +45,12 @@ export default defineNuxtConfig({
       //   file: 'en-US.json'
       // }
     ]
-  }
+  },
+  colorMode: {
+    preference: 'system',   // стартовая тема: 'system' | 'dark' | 'light'
+    fallback: 'dark',      // если не определится
+    classSuffix: '',        // важно: пусто, чтобы использовать именно 'dark'
+    storageKey: 'theme'     // под это имя сохранится выбор (localStorage)
+  },
 
 })
