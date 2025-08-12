@@ -1,0 +1,187 @@
+{
+  "pages": {
+    "title": {
+      "index": "Home"
+    },
+    "string": {
+      "index": {
+        "welcome": "👋 Hi! My name is",
+        "name": "ms0ur",
+        "role": "Frontend/Full-stack Developer",
+        "description1": "I create modern websites and web applications that are pleasant to use: fast, reliable, and responsive.",
+        "description2": "I mostly work with Nuxt/Vue and Tailwind, and use Nitro or Express for the backend.",
+        "description3": "I can implement a project with any tech stack of your choice or select the technology that best suits your needs.",
+        "description4": "I launch projects from scratch — from the idea and design to a fully working online service, or join at specific stages, for example, development only.",
+        "button": {
+          "pricing": "Rates and Development Prices",
+          "about": "Tech Stack and Approach",
+          "portfolio": "Completed Projects",
+          "contact": "Contact Me"
+        }
+      },
+      "about": {
+        "title": "Skills, Technologies, and Approach",
+        "subtitle": "My professional stack and development principles: from technology selection to implementation and support.",
+        "title1": "Development Principles",
+        "list": {
+          "1": "• I create modern, fast, and intuitive websites and applications that work equally well on phones, tablets, and computers.",
+          "2": "• I can launch a project from scratch: from the idea and design to a ready-to-use online service.",
+          "3": "• I develop both what users see (frontend) and what works “behind the scenes” (backend) to ensure everything is reliable and stable.",
+          "4": "• I always think about load speed, interface logic, and visual style to make it enjoyable to use.",
+          "5": "• I constantly learn new technologies and approaches to offer fresh and efficient solutions.",
+          "6": "• I like to dive into the essence of the task and suggest ideas that make the project more useful and valuable for the audience."
+        },
+        "contactButton": "Discuss the Task",
+        "title2": "Technologies",
+        "smallText": "I’m also open to working with other technologies. Please ask for details."
+      },
+      "projects": {
+        "featured": {
+          "title1": "Featured Projects",
+          "subtitle1": "Three projects to quickly understand my style and quality.",
+          "button": "View All Projects",
+          "loading": "Loading projects...",
+          "error": "Failed to load projects. Please try again later."
+        }
+      },
+      "process": {
+        "title": "How I Work",
+        "subtitle": "Transparent, step-by-step — no surprises in deadlines or budget."
+      },
+      "pricing": {
+        "title": "Approximate Prices",
+        "subtitle": "The cost depends on complexity, scope, and deadlines. Below are starting points (after detailed discussion, the price may change).",
+        "button": "Order",
+        "addTitle": "Flexible Collaboration Formats",
+        "basic": {
+          "landing": {
+            "name": "Landing Page",
+            "priceRUB": "from 5,000 ₽",
+            "priceUSD": "from $50",
+            "description": "A single-page site to present a product or service. A one-page business card website or landing page with up to 3 sections.",
+            "features": {
+              "1": "Responsive design (phone, tablet, PC)",
+              "2": "Basic animation",
+              "3": "Post-release support for 2 weeks",
+              "4": "E-receipt",
+              "5": "Timeline — 3–14 days"
+            }
+          },
+          "standard": {
+            "name": "Standard",
+            "priceRUB": "from 15,000 ₽",
+            "priceUSD": "from $150",
+            "description": "A multi-page site for business or portfolio. A business card or corporate site with up to 8 pages.",
+            "features": {
+              "1": "Responsive design (phone, tablet, PC)",
+              "2": "Integration of contact forms",
+              "3": "Basic SEO optimization",
+              "4": "Post-release support for 1 month",
+              "5": "E-receipt & Option to sign a contract",
+              "6": "Timeline — 14–30 days"
+            }
+          },
+          "creative": {
+            "name": "Creative",
+            "priceRUB": "from 30,000 ₽",
+            "priceUSD": "from $300",
+            "description": "A complex site with unique design and functionality.",
+            "features": {
+              "1": "Development from scratch: only the idea is needed",
+              "2": "Custom design in Figma",
+              "3": "Animations and interactive elements",
+              "4": "Tech stack of your choice (Vue, React, etc.)",
+              "5": "Custom backend or integration with yours",
+              "6": "SEO optimization",
+              "7": "Post-release support for 2 months",
+              "8": "E-receipt & Option to sign a contract",
+              "9": "Timeline — 1–3 months"
+            }
+          }
+        },
+        "additional": {
+          "hourly": {
+            "name": "Hourly Work",
+            "priceRUB": "from 450 ₽/hour",
+            "priceUSD": "from $5/hour",
+            "description": "Pay by time if you need small fixes or help.",
+            "features": {
+              "1": "Flexibility in choosing tasks",
+              "2": "Payment only for actual hours worked",
+              "3": "Suitable for consultations or bug fixes",
+              "4": "E-receipt & Option to sign a contract"
+            }
+          },
+          "maintenance": {
+            "name": "Support and Maintenance",
+            "priceRUB": "from 3,000 ₽/month",
+            "priceUSD": "from $30/month",
+            "description": "Monthly maintenance and minor site updates.",
+            "features": {
+              "1": "Uptime monitoring",
+              "2": "Minor edits (up to 2–4 hrs/month)",
+              "3": "Quick bug fixes",
+              "4": "Priority support",
+              "5": "Price freeze",
+              "6": "E-receipt & Option to sign a contract"
+            }
+          }
+        }
+      },
+      "contact": {
+        "title": "Shall We Discuss Your Project?",
+        "subtitle": "Describe your task — I’ll suggest a plan and a timeline estimate as soon as possible.",
+        "emailButton": "Email Me",
+        "emailButtonTiming": "reply ~2 days",
+        "telegramButton": "Message on Telegram",
+        "telegramButtonTiming": "reply ~2 hours"
+      }
+    }
+  },
+  "tech": {
+    "desc": {
+      "nuxt": "Modern web applications with SSR",
+      "vue": "Progressive JavaScript framework",
+      "tailwind": "Utility-first CSS framework",
+      "react": "Library for building user interfaces",
+      "next": "React applications with SSR",
+      "node": "JavaScript runtime for server-side development",
+      "express": "Minimalist web framework for Node.js",
+      "nitro": "Fast backend and REST API",
+      "flutter": "UI toolkit for creating native applications",
+      "prisma": "Modern ORM for Node.js and TypeScript",
+      "restapi": "Integrations and data exchange",
+      "docker": "Application packaging and deployment"
+    }
+  },
+  "steps": [
+    {
+      "title": "Call and Technical Specification",
+      "text": "We have a call, discuss the project, and outline exactly what needs to be done and within what time frame. As a result, we’ll have a clear project plan so we both understand what the outcome will be and how to get there."
+    },
+    {
+      "title": "Terms and 15% Prepayment",
+      "text": "I propose solutions, deadlines, and costs. After confirmation, you pay 15% for me to start working."
+    },
+    {
+      "title": "Draft Prototype",
+      "text": "I create the design, site framework, key pages, and basic structure. You provide feedback and approve."
+    },
+    {
+      "title": "Second Prepayment — 35%",
+      "text": "After the prototype is approved, you pay 35% for the development stage."
+    },
+    {
+      "title": "Development",
+      "text": "Full layout, programming, and integrations. I give you access to preview demo builds directly in your browser."
+    },
+    {
+      "title": "Acceptance and Final Payment — 50%",
+      "text": "We test the site, fix minor bugs, and prepare for launch. After the final payment — release."
+    },
+    {
+      "title": "Release and Support",
+      "text": "We launch the site online. Post-release support is free: bug fixes and help with minor questions about the site."
+    }
+  ]
+}

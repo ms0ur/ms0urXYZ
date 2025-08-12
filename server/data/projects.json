@@ -1,0 +1,270 @@
+[
+  {
+    "id": "helicraft",
+    "slug": "helicraft",
+    "title": "HeliCraft",
+    "shortDescription": "Веб приложение для моего сервера в Minecraft",
+    "fullDescription": "Данное веб приложение разработано с применением самых современных технологий. Оно позволяет игрокам на моем сервере в Minecraft взаимодействовать с различными функциями, такими как управление скинами, просмотр статистики и многое другое. Приложение адаптировано для мобильных устройств, что обеспечивает удобный доступ в любое время и в любом месте. В приложение встроена уникальная система государств для сервера.",
+    "tags": [
+      {
+        "name": "Fullstack",
+        "color": "#0EA5E9"
+      },
+        {
+            "name": "Minecraft",
+            "color": "#F97316"
+        },
+      {
+        "name": "Web App",
+        "color": "#FBBF24"
+      },
+      {
+        "name": "Adaptive",
+        "color": "#34D399"
+      },
+      {
+        "name": "Nuxt",
+        "color": "#4FC08D"
+      },
+      {
+        "name": "Tailwind",
+        "color": "#06B6D4"
+      },
+      {
+        "name": "Nitro",
+        "color": "#F472B6"
+      },
+      {
+        "name": "MySQL",
+        "color": "#FBBF24"
+      }
+    ],
+    "images": [
+      "/projects/helicraft/img.png",
+      "/projects/helicraft/img_1.png",
+      "/projects/helicraft/img_2.png",
+      "/projects/helicraft/img_3.png",
+      "/projects/helicraft/img_4.png",
+      "/projects/helicraft/img_5.png"
+    ],
+    "tech": [
+      {
+        "name": "Vue",
+        "icon": "/icons/vue.svg",
+        "color": "#4FC08D"
+      },
+        {
+            "name": "Nuxt",
+            "icon": "/icons/nuxt.svg",
+            "color": "#4FC08D"
+        },
+        {
+            "name": "Tailwind CSS",
+            "icon": "/icons/tailwind.svg",
+            "color": "#06B6D4"
+        },
+        {
+            "name": "Nitro",
+            "icon": "/icons/nitro.svg",
+            "color": "#F472B6"
+        },
+        {
+            "name": "MySQL",
+            "icon": "/icons/mysql.svg",
+            "color": "#4479A1"
+        }
+    ],
+    "featured": true,
+    "links": {
+      "repo": "https://github.com/HeliCraft-MC/Vesper",
+      "repo2": "https://github.com/HeliCraft-MC/Teapot",
+      "demo": "https://helicraft.ru"
+    },
+    "createdAt": "2024-03-17",
+    "updatedAt": "2024-05-13",
+    "status": ""
+  },
+  {
+    "id": "metwork",
+    "slug": "metwork",
+    "title": "Metwork",
+    "shortDescription": "Небольшая социальная сеть",
+    "fullDescription": "Metwork - это небольшая социальная сеть, разработанная с использованием современных технологий. Она позволяет пользователям создавать профили и публиковать контент. Приложение адаптировано для мобильных устройств, что обеспечивает удобный доступ в любое время и в любом месте. Есть темы, языки, система авторизации.",
+    "tags": [
+      {
+        "name": "Fullstack",
+        "color": "#0EA5E9"
+      },
+      {
+        "name": "Social Network",
+        "color": "#FBBF24"
+      },
+      {
+        "name": "Adaptive",
+        "color": "#34D399"
+      },
+      {
+        "name": "Nuxt",
+        "color": "#4FC08D"
+      },
+      {
+        "name": "Tailwind",
+        "color": "#06B6D4"
+      },
+      {
+        "name": "MongoDB",
+        "color": "#47A248"
+      }
+    ],
+    "images": [
+      "/projects/metwork/img.png",
+      "/projects/metwork/img_1.png",
+      "/projects/metwork/img_2.png"
+    ],
+    "tech": [
+      {
+        "name": "Vue",
+        "icon": "/icons/vue.svg",
+        "color": "#4FC08D"
+      },
+      {
+        "name": "Nuxt",
+        "icon": "/icons/nuxt.svg",
+        "color": "#4FC08D"
+      },
+      {
+        "name": "Tailwind CSS",
+        "icon": "/icons/tailwind.svg",
+        "color": "#06B6D4"
+      },
+      {
+        "name": "Nitro",
+        "icon": "/icons/nitro.svg",
+        "color": "#F472B6"
+      },
+      {
+        "name": "MongoDB",
+        "icon": "/icons/mongodb.svg",
+        "color": "#47A248"
+      }
+    ],
+    "featured": true,
+    "links": {},
+    "createdAt": "2024-03-17",
+    "updatedAt": "2024-05-13",
+    "status": "Archived"
+  },
+  {
+    "id": "mweather",
+    "slug": "mweather",
+    "title": "MWeather",
+    "shortDescription": "Простое веб-приложение для просмотра погоды",
+    "fullDescription": "MWeather - это простое веб-приложение, которое позволяет пользователям просматривать текущую погоду. Оно использует API для получения данных о погоде и отображает их в удобном формате. Приложение адаптировано для мобильных устройств, что обеспечивает удобный доступ в любое время и в любом месте.",
+    "tags": [
+      {
+        "name": "Frontend",
+        "color": "#0EA5E9"
+      },
+      {
+        "name": "Weather App",
+        "color": "#FBBF24"
+      },
+      {
+        "name": "Adaptive",
+        "color": "#34D399"
+      },
+      {
+        "name": "Nuxt",
+        "color": "#4FC08D"
+      },
+      {
+        "name": "Tailwind",
+        "color": "#06B6D4"
+      }
+    ],
+    "images": [
+      "/projects/mweather/img.png",
+      "/projects/mweather/img_1.png"
+    ],
+    "tech": [
+      {
+        "name": "Vue",
+        "icon": "/icons/vue.svg",
+        "color": "#4FC08D"
+      },
+      {
+        "name": "Nuxt",
+        "icon": "/icons/nuxt.svg",
+        "color": "#4FC08D"
+      },
+      {
+        "name": "Tailwind CSS",
+        "icon": "/icons/tailwind.svg",
+        "color": "#06B6D4"
+      }
+    ],
+    "featured": false,
+    "links": {},
+    "createdAt": "2024-03-17",
+    "updatedAt": "2024-05-13",
+    "status": "Archived"
+  },
+  {
+    "id": "this",
+    "slug": "this",
+    "title": "Этот сайт",
+    "shortDescription": "Сайт-портфолио разработчика",
+    "fullDescription": "Этот сайт является моим портфолио, разработан с использованием современных технологий. Он демонстрирует мои навыки и проекты, а также предоставляет информацию о моих услугах. Сайт адаптирован для мобильных устройств, что обеспечивает удобный доступ в любое время и в любом месте. Он включает в себя разделы с информацией о моих услугах, контактную информацию и список моих проектов.",
+    "tags": [
+      {
+        "name": "Frontend",
+        "color": "#0EA5E9"
+        },
+      {
+        "name": "Portfolio",
+        "color": "#FBBF24"
+      },
+      {
+        "name": "Adaptive",
+        "color": "#34D399"
+      },
+      {
+        "name": "Nuxt",
+        "color": "#4FC08D"
+      },
+      {
+        "name": "Tailwind",
+        "color": "#06B6D4"
+      }
+      ],
+    "images": [
+        "/projects/this/img.png",
+        "/projects/this/img_1.png",
+        "/projects/this/img_2.png",
+        "/projects/this/img_3.png"
+    ],
+    "tech": [
+      {
+        "name": "Vue",
+        "icon": "/icons/vue.svg",
+        "color": "#4FC08D"
+      },
+      {
+        "name": "Nuxt",
+        "icon": "/icons/nuxt.svg",
+        "color": "#4FC08D"
+      },
+      {
+        "name": "Tailwind CSS",
+        "icon": "/icons/tailwind.svg",
+        "color": "#06B6D4"
+      }
+    ],
+    "featured": true,
+    "links": {},
+    "createdAt": "2024-03-17",
+    "updatedAt": "2024-05-13",
+    "status": ""
+  }
+
+]
