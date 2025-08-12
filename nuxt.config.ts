@@ -11,6 +11,8 @@ export default defineNuxtConfig({
 
 
 
+
+
   plugins: [
     '~/plugins/route-loading.client.ts',
   ],
