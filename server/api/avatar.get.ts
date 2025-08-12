@@ -6,7 +6,7 @@ import crypto from 'node:crypto'
 import { Readable } from 'node:stream'
 
 const SECRET = process.env.AVATAR_TOKEN_SECRET || 'dev-secret'
-const AVATAR_PATH = path.resolve(process.cwd(), 'private/media/avatar.jpg')
+const AVATAR_PATH = path.resolve(process.cwd(), 'private/media/avatar.webp')
 
 function sign(payload: string) {
     return crypto.createHmac('sha256', SECRET).update(payload).digest('hex')
@@ -34,8 +34,8 @@ export default defineEventHandler(async (event: H3Event) => {
 
     // Не даем браузеру легко кэшировать/шерить ссылку
     setResponseHeader(event, 'Cache-Control', 'private, no-store')
-    setResponseHeader(event, 'Content-Type', 'image/jpeg')
-    setResponseHeader(event, 'Content-Disposition', 'inline; filename="avatar.jpg')
+    setResponseHeader(event, 'Content-Type', 'image/webp')
+    setResponseHeader(event, 'Content-Disposition', 'inline; filename="avatar.webp')
     // отключим CORS на всякий случай
     setResponseHeader(event, 'Access-Control-Allow-Origin', 'null')
 

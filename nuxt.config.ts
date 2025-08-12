@@ -52,5 +52,11 @@ export default defineNuxtConfig({
     classSuffix: '',        // важно: пусто, чтобы использовать именно 'dark'
     storageKey: 'theme'     // под это имя сохранится выбор (localStorage)
   },
+  nitro: {
+    routeRules: {
+      '/icons/**': { headers: { 'cache-control': 'public, max-age=31536000, immutable' } },
+      '/**/*.webp': { headers: { 'cache-control': 'public, max-age=31536000, immutable' } }
+    }
+  }
 
 })

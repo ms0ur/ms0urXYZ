@@ -40,12 +40,12 @@
       }
     ],
     "images": [
-      "/projects/helicraft/img.png",
-      "/projects/helicraft/img_1.png",
-      "/projects/helicraft/img_2.png",
-      "/projects/helicraft/img_3.png",
-      "/projects/helicraft/img_4.png",
-      "/projects/helicraft/img_5.png"
+      "/projects/helicraft/img.webp",
+      "/projects/helicraft/img_1.webp",
+      "/projects/helicraft/img_2.webp",
+      "/projects/helicraft/img_3.webp",
+      "/projects/helicraft/img_4.webp",
+      "/projects/helicraft/img_5.webp"
     ],
     "tech": [
       {
@@ -117,9 +117,9 @@
       }
     ],
     "images": [
-      "/projects/metwork/img.png",
-      "/projects/metwork/img_1.png",
-      "/projects/metwork/img_2.png"
+      "/projects/metwork/img.webp",
+      "/projects/metwork/img_1.webp",
+      "/projects/metwork/img_2.webp"
     ],
     "tech": [
       {
@@ -183,8 +183,8 @@
       }
     ],
     "images": [
-      "/projects/mweather/img.png",
-      "/projects/mweather/img_1.png"
+      "/projects/mweather/img.webp",
+      "/projects/mweather/img_1.webp"
     ],
     "tech": [
       {
@@ -238,10 +238,10 @@
       }
       ],
     "images": [
-        "/projects/this/img.png",
-        "/projects/this/img_1.png",
-        "/projects/this/img_2.png",
-        "/projects/this/img_3.png"
+        "/projects/this/img.webp",
+        "/projects/this/img_1.webp",
+        "/projects/this/img_2.webp",
+        "/projects/this/img_3.webp"
     ],
     "tech": [
       {

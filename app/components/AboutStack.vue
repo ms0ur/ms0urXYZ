@@ -36,17 +36,54 @@ function parseColor(c: string): { r: number; g: number; b: number } | null {
   return null
 }
 
-function makeTileVars(baseColor: Color, iconUrl: string) {
+function makeTileVars(baseColor: Color) {
   const rgb = parseColor(baseColor) ?? { r: 160, g: 160, b: 160 }
-  const bg = `rgba(${rgb.r}, ${rgb.g}, ${rgb.b}, 0.15)`
-  const border = `rgba(${rgb.r}, ${rgb.g}, ${rgb.b}, 0.55)`
+  const bg = `rgba(${rgb.r}, ${rgb.g}, ${rgb.b}, 0.12)`
+  const border = `rgba(${rgb.r}, ${rgb.g}, ${rgb.b}, 0.45)`
   return {
     '--tile-color': `rgb(${rgb.r}, ${rgb.g}, ${rgb.b})`,
     '--tile-bg': bg,
-    '--tile-border': border,
-    '--icon-url': `url('${iconUrl}')`
+    '--tile-border': border
+    // ВАЖНО: тут НЕ ставим --icon-url. Добавим его только при появлении карточки.
   } as Record<string, string>
 }
+
+import { onMounted, onBeforeUnmount, ref, nextTick } from 'vue'
+
+/**
+ * Лениво подставляем маску (SVG) только когда карточка попала во вьюпорт,
+ * чтобы браузер не грузил десятки SVG заранее.
+ */
+const mounted = ref(false)
+let io: IntersectionObserver | null = null
+
+onMounted(async () => {
+  mounted.value = true
+  await nextTick()
+  io = new IntersectionObserver(
+      (entries) => {
+        for (const e of entries) {
+          if (!e.isIntersecting) continue
+          const el = e.target as HTMLElement
+          const icon = el.dataset.icon
+          if (icon && !el.style.getPropertyValue('--icon-url')) {
+            el.style.setProperty('--icon-url', `url('${icon}')`)
+          }
+          io?.unobserve(el)
+        }
+      },
+      { root: null, rootMargin: '200px', threshold: 0.01 }
+  )
+
+  document
+      .querySelectorAll<HTMLElement>('[data-icon]')
+      .forEach((el) => io?.observe(el))
+})
+
+onBeforeUnmount(() => {
+  io?.disconnect()
+  io = null
+})
 </script>
 
 <template>
@@ -77,10 +114,7 @@ function makeTileVars(baseColor: Color, iconUrl: string) {
           </ul>
 
           <div class="mt-6">
-            <a
-                href="#contact"
-                class="btn-primary bg-[#f52216]"
-            >
+            <a href="#contact" class="btn-primary bg-[#f52216]">
               {{$t('pages.string.about.contactButton')}}
             </a>
           </div>
@@ -89,19 +123,24 @@ function makeTileVars(baseColor: Color, iconUrl: string) {
         <!-- Правая колонка -->
         <div>
           <h4 class="text-xl sm:text-2xl font-semibold mb-4">{{$t('pages.string.about.title2')}}</h4>
+
           <div class="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 gap-4">
             <div
                 v-for="t in techs"
                 :key="t.name"
-                class="rounded-lg p-4 flex flex-col justify-between lucid-tile shadow-sm hover:shadow-md transition-shadow focus-within:outline-none focus-within:ring-2 focus-within:ring-[#f52216]/40 hover:border-[#f52216]/60"
-                :style="makeTileVars(t.color, t.icon)"
+                class="tile lucid-tile rounded-lg p-4 flex flex-col justify-between shadow-sm hover:shadow-md transition-shadow hover:border-[#f52216]/60 focus-within:outline-none focus-within:ring-2 focus-within:ring-[#f52216]/40"
+                :style="makeTileVars(t.color)"
+                :data-icon="t.icon"
                 tabindex="0"
             >
-              <div class="lucid-icon"></div>
-              <div class="text-sm font-medium">{{ t.name }}</div>
+              <!-- Иконка через CSS mask, но URL маски вставляем лениво через IO -->
+              <div class="lucid-icon" aria-hidden="true"></div>
+
+              <div class="text-sm font-medium mt-2">{{ t.name }}</div>
               <div class="text-xs opacity-70">{{ $t(t.note) }}</div>
             </div>
           </div>
+
           <p class="text-xs opacity-70 mt-4">
             {{$t('pages.string.about.smallText')}}
           </p>
@@ -124,14 +163,35 @@ function makeTileVars(baseColor: Color, iconUrl: string) {
   background: var(--tile-bg);
   border: 1px solid var(--tile-border);
   border-radius: 10px;
+
+  /* Экономия рендера */
+  content-visibility: auto;
+  contain-intrinsic-size: 120px 96px;
 }
 
-/* Иконка */
+/* Маска: цвет берём из --tile-color, форму — из --icon-url (лениво подставляется JS) */
 .lucid-icon {
   width: 36px;
   height: 36px;
+  flex: 0 0 auto;
   background-color: var(--tile-color);
+
+  /* Когда JS подставит --icon-url, браузер загрузит SVG и применит маску */
   mask: var(--icon-url) center / contain no-repeat;
   -webkit-mask: var(--icon-url) center / contain no-repeat;
+
+  /* Предзаданная форма/фон до загрузки, чтобы не мигало */
+  background-image: linear-gradient(90deg, rgba(0,0,0,0.06), rgba(0,0,0,0.12), rgba(0,0,0,0.06));
+  background-size: 400% 100%;
+  border-radius: 8px;
+  animation: shimmer 1.2s ease-in-out infinite;
+}
+@media (prefers-reduced-motion: reduce) {
+  .lucid-icon { animation: none; }
+}
+
+@keyframes shimmer {
+  0% { background-position: 200% 0; }
+  100% { background-position: -200% 0; }
 }
 </style>
