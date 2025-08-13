@@ -2,6 +2,38 @@
 import { computed, defineAsyncComponent, onMounted, onBeforeUnmount, ref } from 'vue'
 import SafeAvatar from '~/components/SafeAvatar.vue'
 
+useSeoMeta({
+  title: 'Разработка сайтов и веб-приложений в Москве - ms0ur',
+  description: 'Быстрые, надёжные и адаптивные сайты и веб-приложения на Nuxt/Vue или React/Next под ключ. Бэкенд на Nitro/Express. Договор, портфолио, сопровождение. Дёшево.',
+  ogTitle: 'ms0ur - веб-разработчик',
+  ogDescription: 'Сайты и веб-приложения: быстро, аккуратно, под ключ.',
+  ogType: 'website',
+  ogUrl: 'https://ms0ur.space/',
+  ogImage: 'https://ms0ur.space/og/home.png',
+  twitterCard: 'summary_large_image'
+})
+
+useSchemaOrg([
+  defineWebSite({ name: 'ms0ur — сайт разработчика', url: 'https://ms0ur.space' }),
+  definePerson({
+    name: 'Максим Суслов',
+    url: 'https://ms0ur.space',
+    sameAs: ['https://t.me/ms0ur', 'https://github.com/ms0ur']
+  }),
+  definePerson({
+    name: 'Maksim Suslov',
+    url: 'https://ms0ur.space',
+    sameAs: ['https://t.me/ms0ur', 'https://github.com/ms0ur']
+  }),
+  // если как услуга в регионе:
+  defineOrganization({
+    '@type': 'ProfessionalService',
+    name: 'Веб-разработка — ms0ur',
+    areaServed: 'RU',
+    url: 'https://ms0ur.space'
+  })
+])
+
 // 🔹 Разбиваем тяжёлые компоненты на чанки
 const FloatingShapesBackground = defineAsyncComponent(() => import('~/components/FloatingShapesBackground.vue'))
 const AboutStack               = defineAsyncComponent(() => import('~/components/AboutStack.vue'))
@@ -336,7 +368,7 @@ onBeforeUnmount(() => {
               </a>
             </div>
             <div class="flex flex-col items-start">
-              <a href="https://t.me/ms0ur" class="btn-secondary relative" target="_blank" rel="noopener">
+              <a href="https://t.me/ms0ur" class="btn-secondary relative" target="_blank" rel="noopener" >
                 {{ $t('pages.string.contact.telegramButton') }}
                 <span class="absolute -top-2 -right-2 bg-[#f52216] text-white text-[12px] font-medium tracking-wide rounded-full px-2 py-0.5">
                   {{ $t('pages.string.contact.telegramButtonTiming') }}
