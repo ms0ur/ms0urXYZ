@@ -34,6 +34,25 @@ useSchemaOrg([
   })
 ])
 
+const METRIKA_ID = 103744142 // замените на ваш
+
+function reachGoal(goal: string, params?: Record<string, any>) {
+  window.ym?.(METRIKA_ID, 'reachGoal', goal, params)
+}
+
+// трекинг клика по email
+function trackEmail() {
+  reachGoal('EMAIL_CLICK', { method: 'email', place: 'contact_box' })
+  // далее стандартное поведение ссылки:
+  window.location.href = 'mailto:maksimsuslov7142@gmail.com'
+}
+
+// трекинг клика по Телеге
+function trackTelegram() {
+  reachGoal('TELEGRAM_CLICK', { method: 'telegram', place: 'contact_box' })
+  window.open('https://t.me/ms0ur', '_blank')
+}
+
 // 🔹 Разбиваем тяжёлые компоненты на чанки
 const FloatingShapesBackground = defineAsyncComponent(() => import('~/components/FloatingShapesBackground.vue'))
 const AboutStack               = defineAsyncComponent(() => import('~/components/AboutStack.vue'))
@@ -360,7 +379,7 @@ onBeforeUnmount(() => {
           </p>
           <div class="flex flex-col sm:flex-row gap-3 sm:gap-4">
             <div class="flex flex-col items-start">
-              <a href="mailto:maksimsuslov7142@gmail.com" class="btn-primary relative">
+              <a href="mailto:maksimsuslov7142@gmail.com" @click.prevent="trackEmail" class="btn-primary relative">
                 {{ $t('pages.string.contact.emailButton') }}
                 <span class="absolute -top-2 -right-2 bg-[#f52216] text-white text-[12px] font-medium tracking-wide rounded-full px-2 py-0.5">
                   {{ $t('pages.string.contact.emailButtonTiming') }}
@@ -368,7 +387,7 @@ onBeforeUnmount(() => {
               </a>
             </div>
             <div class="flex flex-col items-start">
-              <a href="https://t.me/ms0ur" class="btn-secondary relative" target="_blank" rel="noopener" >
+              <a href="https://t.me/ms0ur" class="btn-secondary relative" @click.prevent="trackTelegram" target="_blank" rel="noopener" >
                 {{ $t('pages.string.contact.telegramButton') }}
                 <span class="absolute -top-2 -right-2 bg-[#f52216] text-white text-[12px] font-medium tracking-wide rounded-full px-2 py-0.5">
                   {{ $t('pages.string.contact.telegramButtonTiming') }}
