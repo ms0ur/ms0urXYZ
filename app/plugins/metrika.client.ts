@@ -1,71 +1,81 @@
 // plugins/metrika.client.ts
 export default defineNuxtPlugin((nuxtApp) => {
-    const METRIKA_ID = 103744142 // ваш ID
+  // === 0) БАЗА ===
+  const METRIKA_ID = 103744142 as const
 
-    // 0) Подготовка dataLayer (для ecommerce и/или унификации событий)
-    window.dataLayer = window.dataLayer || []
+  // dataLayer для ecommerce
+  // (Метрика использует "ecommerce: 'dataLayer'" — см. офиц. пример) 
+  // https://stackoverflow.com/questions/75421131/how-to-use-yandex-metrica-ecommerce-layer-with-react
+  ;(window as any).dataLayer = (window as any).dataLayer || []
 
-    // 1) Не дублируем инициализацию
-    if (window.ym && window.__ym_inited) {
-        return
-    }
+  // Не дублируем инициализацию
+  if ((window as any).__ym_inited) return
 
-    // 2) Грузим официальный tag.js (типобезопасно)
-    const existing = Array.from(document.scripts).some(
-        (s) => s.src.startsWith('https://mc.yandex.ru/metrika/tag.js')
-    )
-    if (!existing) {
-        const s = document.createElement('script')
-        s.async = true
-        s.src = 'https://mc.yandex.ru/metrika/tag.js'
-        const first = document.getElementsByTagName('script')[0]
-        first?.parentNode?.insertBefore(s, first)
-    }
+  // === 1) Правильный shim (как в официальном сниппете) ===
+  // КРИТИЧНО: очередь должна лежать в window.ym.a, иначе tag.js её не считает.
+  type YMFn = ((...args: any[]) => void) & { a?: any[]; l?: number }
+  const w = window as any as { ym?: YMFn; __ym_inited?: boolean }
 
-    // 3) Создаём shim ym до загрузки скрипта (как в официальном сниппете)
-    if (!window.ym) {
-        const q: any[] = []
-        const shim = (...args: any[]) => { q.push(args) }
-        // @ts-expect-error присваиваем shim временно, до загрузки tag.js
-        window.ym = shim as typeof window.ym
-        // отметим «время инициализации» корректно
-        // (в оригинале m[i].l = 1 * new Date(), что триггерит TS warning — используем Date.now())
-        ;(window.ym as any).l = Date.now()
-        // когда tag.js поднимет реальную ym, очередь будет считана самим скриптом
-        // (поведение соответствует официальному коду тега)
-    }
+  if (!w.ym) {
+    const ymShim: YMFn = function (...args: any[]) {
+      // очередь должна быть именно на ym.a
+      ;(ymShim.a = ymShim.a || []).push(args)
+    } as YMFn
+    ymShim.l = Date.now()
+    w.ym = ymShim
+  }
 
-    // 4) Инициализация счётчика для SPA (важно: defer: true)
-    window.ym!(METRIKA_ID, 'init', {
-        defer: true,              // SPA: отключаем авто pageview, шлём hit вручную
-        webvisor: true,
-        clickmap: true,
-        trackLinks: true,
-        accurateTrackBounce: true,
-        ecommerce: 'dataLayer'
-    })
-    window.__ym_inited = true
+  // === 2) Грузим tag.js один раз ===
+  const alreadyHasTag = Array.from(document.scripts).some((s) =>
+    s.src.startsWith('https://mc.yandex.ru/metrika/tag.js')
+  )
+  if (!alreadyHasTag) {
+    const s = document.createElement('script')
+    s.async = true
+    // Можно без ?id=..., т.к. ID передаём в ym(...,'init',...)
+    s.src = 'https://mc.yandex.ru/metrika/tag.js'
+    const first = document.getElementsByTagName('script')[0]
+    first?.parentNode?.insertBefore(s, first)
+  }
 
-    // 5) Функция отправки page hit
-    const sendHit = () => {
-        const url = location.pathname + location.search + location.hash
-        const ref = document.referrer || undefined
-        window.ym!(METRIKA_ID, 'hit', url, {
-            referer: ref,
-            title: document.title
-        })
-    }
+  // === 3) Инициализация счётчика ===
+  // Для SPA ставим defer:true — отключаем авто-pageview и шлём hit вручную.
+  // Поддержка опции defer подтверждается практикой и либами (react-yandex-metrika).
+  // https://www.npmjs.com/package/@appigram/react-yandex-metrika
+  w.ym!(METRIKA_ID, 'init', {
+    defer: true,
+    webvisor: true,
+    clickmap: true,
+    trackLinks: true,
+    accurateTrackBounce: true,
+    ecommerce: 'dataLayer',
+  })
 
-    // 6) Первый hit после монтирования приложения (initial client load)
-    //    (page:finish триггерится только на последующих навигациях)
-    //    https://github.com/nuxt/nuxt/issues/20681
-    nuxtApp.hook('app:mounted', () => {
-        sendHit()
-    })
+  w.__ym_inited = true
 
-    // 7) hit на каждый переход страницы (после завершения навигации)
-    //    Nuxt runtime hook page:finish
-    nuxtApp.hook('page:finish', () => {
-        sendHit()
-    })
+  // === 4) Функция отправки page hit ===
+  const sendHit = () => {
+    const url = location.pathname + location.search + location.hash
+    const referer = document.referrer || undefined
+    const title = document.title || undefined
+    // Сигнатура: ym(ID, 'hit', url, { title, referer })
+    // Подтверждение синтаксиса 'hit' с url/title/referer:
+    // клуб Метрики и интеграционные доки
+    // https://yandex.ru/blog/metrika-club/vopros-pro-metod-hit
+    // https://www.rudderstack.com/docs/destinations/streaming-destinations/yandex-metrica/
+    w.ym!(METRIKA_ID, 'hit', url, { title, referer })
+  }
+
+  // === 5) Первый хит после монтирования приложения ===
+  // Nuxt-хуки: https://nuxt.com/docs/api/advanced/hooks
+  nuxtApp.hook('app:mounted', () => {
+    sendHit()
+  })
+
+  // === 6) Хит на каждую навигацию (после завершения) ===
+  // page:finish — клиентский рантайм-хук Nuxt, срабатывает после рендера страницы
+  // Дискуссия и подтверждение: https://github.com/nuxt/nuxt/issues/21721
+  nuxtApp.hook('page:finish', () => {
+    sendHit()
+  })
 })
